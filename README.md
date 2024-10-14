@@ -1,6 +1,6 @@
 # Taskify
 
-Taskify is a task management application built using React. It provides an easy and intuitive interface for users to manage their tasks, allowing them to add new tasks, delete existing ones, and search for tasks based on both their title and priority. 
+Taskify is a task management application built using React. It provides an easy and intuitive interface for users to manage their tasks, allowing them to add new tasks, delete existing ones, and search for tasks based on both their title and priority.
 
 ## Features
 
@@ -31,27 +31,27 @@ You will need to have Node.js and npm (Node Package Manager) installed on your s
 
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/your-username/taskify.git
-    ```
+   ```bash
+   git clone https://github.com/toufiq007/taskifier.git
+   ```
 
 2. Navigate to the project directory:
 
-    ```bash
-    cd taskify
-    ```
+   ```bash
+   cd taskify
+   ```
 
 3. Install the required dependencies:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 4. Start the development server:
 
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm run dev
+   ```
 
 5. Open your browser and navigate to `http://localhost:3000` to view the app.
 
@@ -69,7 +69,9 @@ You will need to have Node.js and npm (Node Package Manager) installed on your s
 ## Technologies Used
 
 - **React** - A JavaScript library for building user interfaces
-- **CSS** - For styling the application
+- **Vite** - For Setup Code and Bundler
+- **Tailwind CSS** - For full project styling
+- **React State Management** - For Vanilla state management in react with useState hook
 
 ## Contributing
 
