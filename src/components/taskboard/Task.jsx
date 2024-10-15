@@ -4,17 +4,18 @@ import { StarActiveIcon, StarInactiveIcon } from "../../assets/icons/SvgIcons";
 import TaskActionButton from "./TaskActionButton";
 
 const Task = ({ task, handleDeleteTask }) => {
-  const [favouriteTask, setFavouriteTask] = useState(false);
+  // const [favouriteTask, setFavouriteTask] = useState(false);
   return (
     <>
       <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
         <td>
-          <span
+          {/* <span
             onClick={() => setFavouriteTask(!favouriteTask)}
             className="cursor-pointer"
           >
             {favouriteTask ? <StarActiveIcon /> : <StarInactiveIcon />}
-          </span>
+          </span> */}
+          {task.isFavourite ? <StarActiveIcon /> : <StarInactiveIcon />}
         </td>
         <td>{task.taskTitle}</td>
         <td>
