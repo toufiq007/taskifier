@@ -1,9 +1,38 @@
-const AddTaskModal = ({ setShowAddModal }) => {
+import { useState } from "react";
+
+const AddTaskModal = ({ setShowAddModal, handleAddTask }) => {
+  const [tasks, setTasks] = useState({
+    taskTitle: "",
+    taskDesc: "",
+    tags: [],
+    priority: "",
+    isFavourite: false,
+  });
+
+  const handleChange = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    if (name === "tags") {
+      value = value.split(",");
+      console.log(value, "this is the updated value");
+    }
+    setTasks({ ...tasks, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  console.log(tasks, "this is the modal task");
+
   return (
     <>
       <div className="bg-black opacity-60 h-full w-full z-10 absolute top-0 left-0"></div>
       {/* <!-- Add Task Form --> */}
-      <form className="mx-auto my-10 w-full max-w-[740px] rounded-xl border border-[#FEFBFB]/[36%] bg-[#191D26] p-9 max-md:px-4 lg:my-20 lg:p-11 z-10 absolute top-10 left-1/4">
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto my-10 w-full max-w-[740px] rounded-xl border border-[#FEFBFB]/[36%] bg-[#191D26] p-9 max-md:px-4 lg:my-20 lg:p-11 z-10 absolute top-10 left-1/4"
+      >
         <h2 className="mb-9 text-center text-2xl font-bold text-white lg:mb-11 lg:text-[28px]">
           Add New Task
         </h2>
@@ -16,7 +45,9 @@ const AddTaskModal = ({ setShowAddModal }) => {
             <input
               className="block w-full rounded-md bg-[#2D323F] px-3 py-2.5"
               type="text"
-              name="title"
+              name="taskTitle"
+              value={tasks.taskTitle}
+              onChange={handleChange}
               id="title"
               required
             />
@@ -27,7 +58,9 @@ const AddTaskModal = ({ setShowAddModal }) => {
             <textarea
               className="block min-h-[120px] w-full rounded-md bg-[#2D323F] px-3 py-2.5 lg:min-h-[180px]"
               type="text"
-              name="description"
+              name="taskDesc"
+              value={tasks.taskDesc}
+              onChange={handleChange}
               id="description"
               required
             ></textarea>
@@ -41,6 +74,8 @@ const AddTaskModal = ({ setShowAddModal }) => {
                 className="block w-full rounded-md bg-[#2D323F] px-3 py-2.5"
                 type="text"
                 name="tags"
+                value={tasks.tags}
+                onChange={handleChange}
                 id="tags"
                 required
               />
@@ -51,6 +86,8 @@ const AddTaskModal = ({ setShowAddModal }) => {
               <select
                 className="block w-full cursor-pointer rounded-md bg-[#2D323F] px-3 py-2.5"
                 name="priority"
+                value={tasks.priority}
+                onChange={handleChange}
                 id="priority"
                 required
               >
@@ -72,7 +109,10 @@ const AddTaskModal = ({ setShowAddModal }) => {
           </button>
 
           <button
-            type="submit"
+            onClick={() => {
+              handleAddTask(tasks);
+              setShowAddModal(false);
+            }}
             className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
           >
             Create new Task
