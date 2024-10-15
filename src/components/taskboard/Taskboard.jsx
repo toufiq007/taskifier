@@ -15,6 +15,7 @@ const Taskboard = () => {
   const handleAddTask = (task) => {
     console.log(task);
     setTaskListData((prev) => [...prev, task]);
+    setShowAddModal(false); 
   };
   console.log(taskListData, "this is from the taskboard component");
   return (
