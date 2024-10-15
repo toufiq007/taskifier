@@ -1,4 +1,4 @@
-const Footer = () => {
+const FooterSection = () => {
   return (
     <>
       {/* <!-- Footer --> */}
@@ -13,4 +13,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterSection;
