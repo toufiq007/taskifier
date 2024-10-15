@@ -1,13 +1,20 @@
 /* eslint-disable react/prop-types */
-import { StarActiveIcon, StartInactiveIcon } from "../../assets/icons/SvgIcons";
+import { useState } from "react";
+import { StarActiveIcon, StarInactiveIcon } from "../../assets/icons/SvgIcons";
 import TaskActionButton from "./TaskActionButton";
 
-const Task = ({ task }) => {
+const Task = ({ task, handleDeleteTask }) => {
+  const [favouriteTask, setFavouriteTask] = useState(false);
   return (
     <>
       <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
         <td>
-          <StarActiveIcon />
+          <span
+            onClick={() => setFavouriteTask(!favouriteTask)}
+            className="cursor-pointer"
+          >
+            {favouriteTask ? <StarActiveIcon /> : <StarInactiveIcon />}
+          </span>
         </td>
         <td>{task.taskTitle}</td>
         <td>
@@ -26,7 +33,7 @@ const Task = ({ task }) => {
         </td>
         <td className="text-center">High</td>
         <td>
-          <TaskActionButton />
+          <TaskActionButton id={task.id} handleDeleteTask={handleDeleteTask} />
         </td>
       </tr>
     </>

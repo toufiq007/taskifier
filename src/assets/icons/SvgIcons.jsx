@@ -147,7 +147,7 @@ export const StarActiveIcon = (props) => (
 );
 
 
-export const StartInactiveIcon = (props) => (
+export const StarInactiveIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="icon icon-tabler icon-tabler-star"
