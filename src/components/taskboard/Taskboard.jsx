@@ -8,30 +8,50 @@ import AddTaskModal from "./AddTaskModal";
 const Taskboard = () => {
   const [taskListData, setTaskListData] = useState(temporaryTaskList);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [updateTask, setUpdateTask] = useState(null);
   const handleDeleteTask = (id) => {
     const newFilterArray = taskListData.filter((item) => item.id !== id);
     setTaskListData(newFilterArray);
   };
-  const handleAddTask = (task) => {
-    console.log(task);
-    setTaskListData((prev) => [...prev, task]);
-    setShowAddModal(false); 
+
+  const addOrEditTask = (newAddedTask, isAdd) => {
+    console.log(isAdd, "this is the addOredit task function");
+    if (isAdd) {
+      setTaskListData((prev) => [...prev, newAddedTask]);
+    } else {
+      setTaskListData((tasks) =>
+        tasks.map((task) => (task.id === newAddedTask.id ? newAddedTask : task))
+      );
+    }
+    setShowAddModal(false);
   };
-  console.log(taskListData, "this is from the taskboard component");
+
+  const handleFindUpdateTask = (task) => {
+    setUpdateTask(task);
+    setShowAddModal(true);
+  };
+
+  console.log(updateTask, "this is the update task");
+
   return (
     <>
       <section className="mb-20" id="tasks">
         {showAddModal && (
           <AddTaskModal
             setShowAddModal={setShowAddModal}
-            handleAddTask={handleAddTask}
+            addOrEditTask={addOrEditTask}
+            updateTask={updateTask}
           />
         )}
         <div className="container">
           <SearchTask />
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-            <TaskAction handleAddTask={() => setShowAddModal(true)} />
-            <TaskList data={taskListData} handleDeleteTask={handleDeleteTask} />
+            <TaskAction setShowAddModal={setShowAddModal} />
+            <TaskList
+              data={taskListData}
+              handleDeleteTask={handleDeleteTask}
+              handleFindUpdateTask={handleFindUpdateTask}
+            />
           </div>
         </div>
       </section>

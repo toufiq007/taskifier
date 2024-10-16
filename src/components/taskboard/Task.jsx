@@ -3,7 +3,7 @@ import { useState } from "react";
 import { StarActiveIcon, StarInactiveIcon } from "../../assets/icons/SvgIcons";
 import TaskActionButton from "./TaskActionButton";
 
-const Task = ({ task, handleDeleteTask }) => {
+const Task = ({ task, handleDeleteTask, handleFindUpdateTask }) => {
   // const [favouriteTask, setFavouriteTask] = useState(false);
   return (
     <>
@@ -34,7 +34,21 @@ const Task = ({ task, handleDeleteTask }) => {
         </td>
         <td className="text-center">High</td>
         <td>
-          <TaskActionButton id={task.id} handleDeleteTask={handleDeleteTask} />
+          {/* <TaskActionButton id={task.id} handleDeleteTask={handleDeleteTask} /> */}
+          <div className="flex items-center justify-center space-x-3">
+            <button
+              onClick={() => handleDeleteTask(task.id)}
+              className="text-red-500"
+            >
+              Delete
+            </button>
+            <button
+              onClick={() => handleFindUpdateTask(task)}
+              className="text-blue-500"
+            >
+              Edit
+            </button>
+          </div>
         </td>
       </tr>
     </>
