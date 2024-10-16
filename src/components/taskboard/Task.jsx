@@ -1,35 +1,39 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import { StarActiveIcon, StarInactiveIcon } from "../../assets/icons/SvgIcons";
-import TaskActionButton from "./TaskActionButton";
 
-const Task = ({ task, handleDeleteTask, handleFindUpdateTask }) => {
-  // const [favouriteTask, setFavouriteTask] = useState(false);
+const Task = ({
+  task,
+  handleDeleteTask,
+  handleFindUpdateTask,
+  handleFavouriteTask,
+}) => {
   return (
     <>
       <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
         <td>
-          {/* <span
-            onClick={() => setFavouriteTask(!favouriteTask)}
+          <span
+            onClick={() => handleFavouriteTask(task.id)}
             className="cursor-pointer"
           >
-            {favouriteTask ? <StarActiveIcon /> : <StarInactiveIcon />}
-          </span> */}
-          {task.isFavourite ? <StarActiveIcon /> : <StarInactiveIcon />}
+            {task.isFavourite ? <StarActiveIcon /> : <StarInactiveIcon />}
+          </span>
         </td>
         <td>{task.taskTitle}</td>
         <td>
           <div>{task.taskDesc}</div>
         </td>
         <td>
-          <ul className="flex justify-center gap-1.5 flex-wrap">
-            {task.tags.map((tag, index) => (
-              <li key={index}>
-                <span className="inline-block h-5 whitespace-nowrap rounded-[45px] bg-[#00D991A1] px-2.5 text-sm capitalize text-[#F4F5F6]">
+          <ul className="flex justify-center gap-1.5 flex-wrap w-[200px]">
+            <li>
+              {task.tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="inline-block h-5 whitespace-nowrap rounded-[45px] bg-[#00D991A1] px-2.5 text-sm capitalize text-[#F4F5F6]"
+                >
                   {tag}
                 </span>
-              </li>
-            ))}
+              ))}
+            </li>
           </ul>
         </td>
         <td className="text-center">High</td>

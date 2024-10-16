@@ -32,6 +32,15 @@ const Taskboard = () => {
     setShowAddModal(true);
   };
 
+  const handleFavouriteTask = (taskID) => {
+    setTaskListData((task) =>
+      task.map((item) =>
+        item.id === taskID ? { ...item, isFavourite: !item.isFavourite } : item
+      )
+    );
+    console.log(taskID);
+  };
+
   const handleModalClose = () => {
     setShowAddModal(false);
     setUpdateTask(null);
@@ -52,11 +61,15 @@ const Taskboard = () => {
         <div className="container">
           <SearchTask />
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-            <TaskAction setShowAddModal={setShowAddModal} />
+            <TaskAction
+              setTaskListData={setTaskListData}
+              setShowAddModal={setShowAddModal}
+            />
             <TaskList
               data={taskListData}
               handleDeleteTask={handleDeleteTask}
               handleFindUpdateTask={handleFindUpdateTask}
+              handleFavouriteTask={handleFavouriteTask}
             />
           </div>
         </div>

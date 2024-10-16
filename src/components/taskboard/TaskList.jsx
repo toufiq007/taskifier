@@ -1,6 +1,6 @@
 import Task from "./Task";
 
-const TaskList = ({ data, handleDeleteTask,handleFindUpdateTask }) => {
+const TaskList = ({ data, handleDeleteTask,handleFindUpdateTask,handleFavouriteTask }) => {
   return (
     <>
       {data?.length > 0 ? (
@@ -35,6 +35,7 @@ const TaskList = ({ data, handleDeleteTask,handleFindUpdateTask }) => {
                     task={task}
                     handleDeleteTask={handleDeleteTask}
                     handleFindUpdateTask={handleFindUpdateTask}
+                    handleFavouriteTask={handleFavouriteTask}
                   />
                 ))}
             </tbody>
