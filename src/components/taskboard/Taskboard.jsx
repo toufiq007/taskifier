@@ -22,6 +22,7 @@ const Taskboard = () => {
       setTaskListData((tasks) =>
         tasks.map((task) => (task.id === newAddedTask.id ? newAddedTask : task))
       );
+      setUpdateTask(null);
     }
     setShowAddModal(false);
   };
@@ -31,6 +32,11 @@ const Taskboard = () => {
     setShowAddModal(true);
   };
 
+  const handleModalClose = () => {
+    setShowAddModal(false);
+    setUpdateTask(null);
+  };
+
   console.log(updateTask, "this is the update task");
 
   return (
@@ -38,7 +44,7 @@ const Taskboard = () => {
       <section className="mb-20" id="tasks">
         {showAddModal && (
           <AddTaskModal
-            setShowAddModal={setShowAddModal}
+            handleModalClose={handleModalClose}
             addOrEditTask={addOrEditTask}
             updateTask={updateTask}
           />
