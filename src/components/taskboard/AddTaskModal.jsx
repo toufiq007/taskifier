@@ -12,6 +12,7 @@ const AddTaskModal = ({ handleModalClose, addOrEditTask, updateTask }) => {
     }
   );
   const [isAdd, setIsAdd] = useState(Object.is(updateTask, null));
+  console.log(isAdd, "this is the is aDd function in takkifier");
 
   const handleChange = (e) => {
     let name = e.target.name;

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { SearchIcon } from "../../assets/icons/SvgIcons";
 
-const SearchTask = () => {
+const SearchTask = ({handleChange}) => {
+  
   return (
     <>
       {/* <!-- Search Box --> */}
@@ -11,6 +13,7 @@ const SearchTask = () => {
               <input
                 type="search"
                 id="search-dropdown"
+                onChange={handleChange}
                 className="z-20 block w-full bg-gray-800 px-4 py-2 pr-10 focus:outline-none"
                 placeholder="Search Task"
                 required
