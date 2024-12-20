@@ -1,5 +1,3 @@
-import LWSLogo from "../../assets/icons/SvgIcons";
-
 const Header = () => {
   return (
     <>
@@ -8,7 +6,7 @@ const Header = () => {
         <div className="container mx-auto flex items-center justify-between gap-x-6">
           {/* <!-- Logo --> */}
           <a href="/">
-            <LWSLogo />
+            Taskifier
           </a>
           {/* <!-- Logo Ends --> */}
         </div>
